@@ -38,6 +38,7 @@ class OrderItemSchema(BaseModel):
 class CreateOrderSchema(BaseModel):
     order: conlist(OrderItemSchema, min_items=1)
 
+    # can use config to ban properties that havent beem definded in the schema
     class Config:
         extra = Extra.forbid
 
