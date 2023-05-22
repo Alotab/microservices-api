@@ -14,6 +14,7 @@ app = Flask(__name__)
 # pass the config to the flask app
 app.config.from_object(BaseConfig)
 
+# the smorest-api takes the flask instance -app
 kitchen_api = Api(app)
 
 # register the created blueprint(imported from the api) to our API object in the kitchen app.py
