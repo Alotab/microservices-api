@@ -32,9 +32,9 @@ def validate_schedule(schedule):
 
 @blueprint.route("/kitchen/schedules")
 class KitchenSchedules(MethodView):
-    @blueprint.arguments(GetKitchenScheduleParameters, location="query")
+    @blueprint.arguments(GetKitchenScheduleParameters, location="query")   # specify that the properties defined in the schema are expected in the URL, so we set the location parameter to query
     @blueprint.response(status_code=200, schema=GetScheduledOrdersSchema)
-    def get(self, parameters):
+    def get(self, parameters):  # capture URL query parameter in the function signature
         for schedule in schedules:
             validate_schedule(schedule)
 

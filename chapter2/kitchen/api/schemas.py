@@ -49,7 +49,7 @@ class ScheduleStatusSchema(Schema):
         ),
     )
 
-
+# we create a model to represent URL query parameterts in flask-smorest
 class GetKitchenScheduleParameters(Schema):
     class Meta:
         unknown = EXCLUDE
