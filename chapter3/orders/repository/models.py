@@ -5,6 +5,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
+## The declarative base model is a class that can map ORM classes to database tables and columns, 
+# and therefore all our database models must inherit from it
 Base = declarative_base()
 
 
@@ -16,12 +18,13 @@ class OrderModel(Base):
     __tablename__ = 'order'
 
     id = Column(String, primary_key=True, default=generate_uuid)
-    items = relationship('OrderItemModel', backref='order')
+    items = relationship('OrderItemModel', backref='order') # create one to many relationship
     status = Column(String, nullable=False, default='created')
     created = Column(DateTime, default=datetime.utcnow)
     schedule_id = Column(String)
     delivery_id = Column(String)
 
+    # custom method to render our our objects ias python representation
     def dict(self):
         return {
             'id': self.id,
